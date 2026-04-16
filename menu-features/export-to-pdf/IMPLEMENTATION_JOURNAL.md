@@ -13,8 +13,10 @@
 
 ## Git History
 
-_Will be updated as commits are made._
+- `f446f0b` — Added RATIONALE.md for Export to PDF feature
+- `5c5bbca` — Added design wireframes and design-evolution.md
+- `71cf0f1` — Added PdfExportService, wired Export PDF button into RecipeEditorView, added unit tests
 
 ## PR History
 
-_Will be updated when PR is opened._
+- [PR #1: Add Export to PDF feature](https://github.com/neu-cs3100/sp26-hw-cyb12-group-4619/pull/1) — Adds feature summary, implementation journal, PdfExportService, unit tests, and Export PDF button in Recipe Editor toolbar.
