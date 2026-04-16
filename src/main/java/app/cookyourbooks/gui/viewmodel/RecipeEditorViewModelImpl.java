@@ -175,6 +175,12 @@ public class RecipeEditorViewModelImpl implements RecipeEditorViewModel {
             });
   }
 
+  /** Returns the current recipe for export. */
+  @SuppressWarnings("NullAway")
+  public Recipe getCurrentRecipe() {
+    return buildRecipeFromCurrentState();
+  }
+
   @SuppressWarnings("NullAway")
   private Recipe buildRecipeFromCurrentState() {
     Recipe original = originalRecipe;

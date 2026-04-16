@@ -1,5 +1,7 @@
 package app.cookyourbooks.gui.view;
 
+import java.io.File;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -11,10 +13,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.stage.FileChooser;
 
 import app.cookyourbooks.gui.EditableIngredient;
 import app.cookyourbooks.gui.NavigationService;
+import app.cookyourbooks.gui.PdfExportService;
 import app.cookyourbooks.gui.viewmodel.RecipeEditorViewModelImpl;
+import app.cookyourbooks.model.Recipe;
 import app.cookyourbooks.repository.RecipeRepository;
 import app.cookyourbooks.services.TransformerService;
 
@@ -32,6 +37,7 @@ public class RecipeEditorViewController {
   @FXML private Button scaleButton;
   @FXML private TextField servingsField;
   @FXML private Label scaleStatusLabel;
+  @FXML private Button exportPdfButton;
   @FXML private Label statusLabel;
 
   private final RecipeEditorViewModelImpl viewModel;
@@ -112,7 +118,7 @@ public class RecipeEditorViewController {
                   viewModel.loadRecipe(newId);
                   scaleStatusLabel.setText("");
                 } catch (Exception e) {
-                  statusLabel.setText("Failed to load recipe: " + e.getMessage());
+                  viewModel.statusMessageProperty().set("Failed to load recipe: " + e.getMessage());
                 }
               }
             });
@@ -194,6 +200,33 @@ public class RecipeEditorViewController {
       scaleStatusLabel.setText("Scaled to " + targetServings + " servings.");
     } catch (Exception e) {
       scaleStatusLabel.setText("Scale failed: " + e.getMessage());
+    }
+  }
+
+  @FXML
+  private void onExportPdf() {
+    if (!viewModel.recipeLoadedProperty().get()) {
+      viewModel.statusMessageProperty().set("No recipe loaded to export.");
+      return;
+    }
+
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Export Recipe to PDF");
+    fileChooser.setInitialFileName(viewModel.titleProperty().get() + ".pdf");
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+
+    File file = fileChooser.showSaveDialog(exportPdfButton.getScene().getWindow());
+    if (file == null) {
+      return;
+    }
+
+    try {
+      Recipe recipe = viewModel.getCurrentRecipe();
+      PdfExportService pdfService = new PdfExportService();
+      pdfService.exportToPdf(recipe, file);
+      viewModel.statusMessageProperty().set("Exported to " + file.getName());
+    } catch (Exception e) {
+      statusLabel.setText("Export failed: " + e.getMessage());
     }
   }
 

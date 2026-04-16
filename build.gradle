@@ -76,6 +76,7 @@ dependencies {
     implementation libs.jackson.annotations
     implementation libs.jackson.jdk8      // For Optional support
     implementation libs.jackson.jsr310    // For Java 8 date/time support
+    implementation 'com.github.librepdf:openpdf:2.0.3'     // OpenPDF for PDF export
 
     // SLF4J and Logback for logging
     implementation libs.slf4j.api
