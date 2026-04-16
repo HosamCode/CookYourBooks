@@ -13,8 +13,10 @@
 
 ## Git History
 
-_Will be updated as commits are made._
+- `f446f0b` — Added RATIONALE.md for Export to PDF feature
+- `5c5bbca` — Added design wireframes and design-evolution.md
+- `71cf0f1` — Added PdfExportService, wired Export PDF button into RecipeEditorView, added unit tests
 
 ## PR History
 
-_Will be updated when PR is opened._
+_PR to be opened from `feature/export-to-pdf` branch for final documentation and cleanup._
