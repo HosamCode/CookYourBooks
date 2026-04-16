@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="app.cookyourbooks.gui.view.ImportViewController">
+    <!-- Idle State -->
+    <VBox visible="${viewModel.state == 'idle'}" managed="${viewModel.state == 'idle'}">
+        <Label text="Select an image to import a recipe." />
+        <Button text="Start Import" onAction="#onStartImport" />
+    </VBox>
+
+    <!-- Processing State -->
+    <VBox visible="${viewModel.state == 'processing'}" managed="${viewModel.state == 'processing'}">
+        <Label text="${viewModel.statusMessage}" />
+        <ProgressBar progress="${viewModel.progress}" />
+        <Button text="Cancel" onAction="#onCancelImport" />
+    </VBox>
+
+    <!-- Review State -->
+    <VBox visible="${viewModel.state == 'review'}" managed="${viewModel.state == 'review'}">
+        <Label text="Review the imported recipe:" />
+        <TextField text="${viewModel.importedRecipe.title}" />
+        <ListView items="${viewModel.importedRecipe.ingredients}" />
+        <ComboBox items="${viewModel.availableCollections}" value="${viewModel.selectedCollectionId}" />
+        <Button text="Accept" onAction="#onAcceptImport" />
+        <Button text="Reject" onAction="#onRejectImport" />
+    </VBox>
+
+    <!-- Error State -->
+    <VBox visible="${viewModel.state == 'error'}" managed="${viewModel.state == 'error'}">
+        <Label text="${viewModel.errorMessage}" />
+        <Button text="Retry" onAction="#onRetry" />
+    </VBox>
+</StackPane>

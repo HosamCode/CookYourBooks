@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="app.cookyourbooks.gui.view.SearchViewController"
+    spacing="10" styleClass="feature-root"
+    VBox.vgrow="ALWAYS" maxHeight="Infinity" maxWidth="Infinity">
+
+    <padding>
+        <Insets top="16" right="16" bottom="16" left="16" />
+    </padding>
+
+    <!-- Search bar row -->
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField"
+            HBox.hgrow="ALWAYS"
+            promptText="Search recipes by title…" />
+        <ProgressIndicator fx:id="loadingIndicator" maxHeight="20" maxWidth="20" />
+    </HBox>
+
+    <!-- Status message -->
+    <Label fx:id="statusLabel" styleClass="status-label" />
+
+    <!-- Ingredient filter row -->
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <TextField fx:id="ingredientField"
+            promptText="Add ingredient filter…"
+            HBox.hgrow="ALWAYS" />
+        <Button fx:id="addFilterBtn" text="Add Filter"
+            onAction="#onAddIngredientFilter" />
+    </HBox>
+
+    <!-- Active filter chips -->
+    <FlowPane fx:id="filterChips" hgap="6" vgap="6" />
+
+    <!-- Results list -->
+    <ListView fx:id="resultsList" VBox.vgrow="ALWAYS" />
+
+</VBox>
