@@ -19,4 +19,4 @@
 
 ## PR History
 
-_PR to be opened from `feature/export-to-pdf` branch for final documentation and cleanup._
+- [PR #1: Add Export to PDF feature](https://github.com/neu-cs3100/sp26-hw-cyb12-group-4619/pull/1) — Adds feature summary, implementation journal, PdfExportService, unit tests, and Export PDF button in Recipe Editor toolbar.
