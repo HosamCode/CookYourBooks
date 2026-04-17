@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  Shopping List View — select recipes and generate an aggregated ingredient list.
+
+  Layout:
+    Top    : view title
+    Center : recipe selection (left) | shopping list results (right)
+-->
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="shopping-list-view">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets bottom="8"/>
+            </padding>
+            <Label text="Shopping List" styleClass="view-title"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="16">
+
+            <!-- Left: pick recipes to include -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Select Recipes"/>
+                <ListView fx:id="recipesListView" VBox.vgrow="ALWAYS"/>
+                <Button fx:id="generateButton" text="Generate" maxWidth="Infinity"/>
+                <Button fx:id="clearButton"    text="Clear"    maxWidth="Infinity"/>
+            </VBox>
+
+            <!-- Right: aggregated results -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Shopping Items"/>
+                <ListView fx:id="shoppingItemsListView" VBox.vgrow="ALWAYS"/>
+                <Label text="Also needed (no exact quantity)"/>
+                <ListView fx:id="uncountableItemsListView" prefHeight="120"/>
+                <Label fx:id="statusLabel"/>
+                <!-- visible and managed are both bound to loadingProperty() -->
+                <ProgressIndicator fx:id="loadingIndicator"
+                                   maxWidth="Infinity"
+                                   prefHeight="24"/>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

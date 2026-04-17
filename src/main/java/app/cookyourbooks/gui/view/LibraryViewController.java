@@ -53,8 +53,8 @@ public class LibraryViewController {
 
     // ── Collections list ─────────────────────────────────────────────────────
     // Safe cast: our LibraryViewModelImpl always returns ObservableList<CollectionSummary>
-    collectionsListView.setItems(
-        (ObservableList<CollectionSummary>) viewModel.collectionsProperty());
+    var collectionItems = (ObservableList<CollectionSummary>) viewModel.collectionsProperty();
+    collectionsListView.setItems(collectionItems);
     collectionsListView.setCellFactory(
         lv ->
             new ListCell<>() {
