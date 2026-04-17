@@ -31,6 +31,7 @@
             <Button fx:id="editorButton" text="Recipe Editor" styleClass="nav-button" maxWidth="Infinity"/>
             <Button fx:id="importButton" text="Import" styleClass="nav-button" maxWidth="Infinity"/>
             <Button fx:id="searchButton" text="Search" styleClass="nav-button" maxWidth="Infinity"/>
+            <Button fx:id="shoppingListButton" text="Shopping List" styleClass="nav-button" maxWidth="Infinity"/>
         </VBox>
     </left>
 

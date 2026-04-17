@@ -20,6 +20,7 @@ public class MainViewController {
   @FXML private Button editorButton;
   @FXML private Button importButton;
   @FXML private Button searchButton;
+  @FXML private Button shoppingListButton;
 
   private final NavigationService navigationService;
   private final Map<View, Node> viewNodes = new EnumMap<>(View.class);
@@ -40,6 +41,7 @@ public class MainViewController {
     editorButton.setOnAction(e -> navigationService.navigateTo(View.RECIPE_EDITOR));
     importButton.setOnAction(e -> navigationService.navigateTo(View.IMPORT));
     searchButton.setOnAction(e -> navigationService.navigateTo(View.SEARCH));
+    shoppingListButton.setOnAction(e -> navigationService.navigateTo(View.SHOPPING_LIST));
 
     navigationService
         .currentViewProperty()
@@ -75,12 +77,14 @@ public class MainViewController {
     editorButton.getStyleClass().remove("nav-active");
     importButton.getStyleClass().remove("nav-active");
     searchButton.getStyleClass().remove("nav-active");
+    shoppingListButton.getStyleClass().remove("nav-active");
 
     switch (view) {
       case LIBRARY -> libraryButton.getStyleClass().add("nav-active");
       case RECIPE_EDITOR -> editorButton.getStyleClass().add("nav-active");
       case IMPORT -> importButton.getStyleClass().add("nav-active");
       case SEARCH -> searchButton.getStyleClass().add("nav-active");
+      case SHOPPING_LIST -> shoppingListButton.getStyleClass().add("nav-active");
       default -> throw new IllegalStateException("Unknown view: " + view);
     }
   }

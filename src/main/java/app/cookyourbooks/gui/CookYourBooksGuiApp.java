@@ -18,9 +18,12 @@ import app.cookyourbooks.gui.view.LibraryViewController;
 import app.cookyourbooks.gui.view.MainViewController;
 import app.cookyourbooks.gui.view.RecipeEditorViewController;
 import app.cookyourbooks.gui.view.SearchViewController;
+import app.cookyourbooks.gui.view.ShoppingListViewController;
 import app.cookyourbooks.gui.viewmodel.LibraryViewModelImpl;
 import app.cookyourbooks.gui.viewmodel.SearchViewModelImpl;
+import app.cookyourbooks.gui.viewmodel.ShoppingListViewModelImpl;
 import app.cookyourbooks.services.LibrarianServiceImpl;
+import app.cookyourbooks.services.RecipeServiceImpl;
 import app.cookyourbooks.services.TransformerServiceImpl;
 
 public class CookYourBooksGuiApp extends Application {
@@ -37,6 +40,11 @@ public class CookYourBooksGuiApp extends Application {
         new LibrarianServiceImpl(
             library.getRecipeRepository(), library.getCollectionRepository(), library);
     var transformerService = new TransformerServiceImpl(library::getConversionRegistry);
+    var recipeService =
+        new RecipeServiceImpl(
+            library.getRecipeRepository(),
+            library.getCollectionRepository(),
+            library.getConversionRegistry());
     LOG.info("Loaded {} collections", librarianService.listCollections().size());
 
     // ── 3. Create shared navigation ──
@@ -88,6 +96,20 @@ public class CookYourBooksGuiApp extends Application {
       LOG.info("Search view registered");
     } catch (IOException e) {
       LOG.error("Failed to load SearchView.fxml", e);
+    }
+
+    // ── Wire Shopping List ──
+    var shoppingListVm = new ShoppingListViewModelImpl(librarianService, recipeService);
+    FXMLLoader shoppingListLoader =
+        new FXMLLoader(getClass().getResource("/fxml/ShoppingListView.fxml"));
+    shoppingListLoader.setControllerFactory(
+        clazz -> new ShoppingListViewController(shoppingListVm));
+    try {
+      Parent shoppingListView = shoppingListLoader.load();
+      mainController.setViewNode(NavigationService.View.SHOPPING_LIST, shoppingListView);
+      LOG.info("Shopping List view registered");
+    } catch (IOException e) {
+      LOG.error("Failed to load ShoppingListView.fxml", e);
     }
 
     // TODO: Wire Import Interface (Angela)
