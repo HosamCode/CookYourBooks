@@ -36,7 +36,6 @@ public class MainViewController {
   @SuppressWarnings("UnusedMethod")
   @FXML
   private void initialize() {
-    System.out.println("initialize() called!");
     libraryButton.setOnAction(e -> navigationService.navigateTo(View.LIBRARY));
     editorButton.setOnAction(e -> navigationService.navigateTo(View.RECIPE_EDITOR));
     importButton.setOnAction(e -> navigationService.navigateTo(View.IMPORT));
@@ -45,24 +44,17 @@ public class MainViewController {
 
     navigationService
         .currentViewProperty()
-        .addListener(
-            (obs, oldView, newView) -> {
-              System.out.println("NAV LISTENER FIRED: " + newView);
-              showView(newView);
-            });
+        .addListener((obs, oldView, newView) -> showView(newView));
 
     showView(navigationService.getCurrentView());
   }
 
   private void showView(View view) {
-    System.out.println("SHOW VIEW CALLED: " + view);
     if (contentArea == null) {
-      System.out.println("contentArea is null — skipping");
       return;
     }
 
     Node node = viewNodes.get(view);
-    System.out.println("NODE = " + node);
 
     // Ensure node fills the StackPane
     if (node instanceof javafx.scene.layout.Region region) {

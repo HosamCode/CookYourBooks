@@ -58,6 +58,17 @@ public final class LibraryViewModelImpl implements LibraryViewModel {
 
     // Re-derive the visible list whenever the filter text changes.
     filterText.addListener((obs, oldVal, newVal) -> applyFilter());
+
+    // Pre-populate synchronously so the Library view shows data immediately on first open.
+    var rawCollections = librarianService.listCollections();
+    allCollections =
+        rawCollections.stream()
+            .map(
+                c ->
+                    new CollectionSummary(
+                        c.getId(), c.getTitle(), c.getSourceType(), c.getRecipes().size()))
+            .toList();
+    applyFilter();
   }
 
   // ── Observable property accessors ─────────────────────────────────────────

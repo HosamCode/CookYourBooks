@@ -1,0 +1,140 @@
+{
+  "collections": [
+    {
+      "type": "personal",
+      "id": "collection-1",
+      "title": "My Recipes",
+      "description": null,
+      "notes": null,
+      "recipes": [
+        {
+          "id": "recipe-1",
+          "title": "Pancakes",
+          "servings": { "amount": 4, "description": "pancakes" },
+          "ingredients": [
+            {
+              "type": "measured",
+              "name": "flour",
+              "quantity": { "type": "exact", "amount": 2.0, "unit": "CUP" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "measured",
+              "name": "milk",
+              "quantity": { "type": "exact", "amount": 1.0, "unit": "CUP" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "measured",
+              "name": "egg",
+              "quantity": { "type": "exact", "amount": 1.0, "unit": "WHOLE" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "vague",
+              "name": "salt",
+              "preparation": null,
+              "notes": "to taste"
+            }
+          ],
+          "instructions": [
+            { "stepNumber": 1, "text": "Mix flour, milk, and egg until smooth.", "ingredientRefs": [] },
+            { "stepNumber": 2, "text": "Heat a lightly oiled griddle over medium heat.", "ingredientRefs": [] },
+            { "stepNumber": 3, "text": "Pour batter onto griddle and cook until bubbles form, then flip.", "ingredientRefs": [] }
+          ],
+          "conversionRules": []
+        },
+        {
+          "id": "recipe-2",
+          "title": "Tomato Pasta",
+          "servings": { "amount": 2, "description": "servings" },
+          "ingredients": [
+            {
+              "type": "measured",
+              "name": "pasta",
+              "quantity": { "type": "exact", "amount": 200.0, "unit": "GRAM" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "measured",
+              "name": "canned tomatoes",
+              "quantity": { "type": "exact", "amount": 400.0, "unit": "GRAM" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "vague",
+              "name": "garlic",
+              "preparation": "minced",
+              "notes": null
+            },
+            {
+              "type": "vague",
+              "name": "olive oil",
+              "preparation": null,
+              "notes": "to taste"
+            }
+          ],
+          "instructions": [
+            { "stepNumber": 1, "text": "Cook pasta according to package instructions.", "ingredientRefs": [] },
+            { "stepNumber": 2, "text": "Sauté garlic in olive oil, add tomatoes and simmer 10 minutes.", "ingredientRefs": [] },
+            { "stepNumber": 3, "text": "Toss pasta with sauce and serve.", "ingredientRefs": [] }
+          ],
+          "conversionRules": []
+        },
+        {
+          "id": "recipe-3",
+          "title": "Chocolate Chip Cookies",
+          "servings": { "amount": 24, "description": "cookies" },
+          "ingredients": [
+            {
+              "type": "measured",
+              "name": "butter",
+              "quantity": { "type": "exact", "amount": 1.0, "unit": "CUP" },
+              "preparation": "softened",
+              "notes": null
+            },
+            {
+              "type": "measured",
+              "name": "sugar",
+              "quantity": { "type": "exact", "amount": 0.75, "unit": "CUP" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "measured",
+              "name": "flour",
+              "quantity": { "type": "exact", "amount": 2.25, "unit": "CUP" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "measured",
+              "name": "chocolate chips",
+              "quantity": { "type": "exact", "amount": 2.0, "unit": "CUP" },
+              "preparation": null,
+              "notes": null
+            },
+            {
+              "type": "vague",
+              "name": "vanilla extract",
+              "preparation": null,
+              "notes": "1 tsp"
+            }
+          ],
+          "instructions": [
+            { "stepNumber": 1, "text": "Cream butter and sugar together until fluffy.", "ingredientRefs": [] },
+            { "stepNumber": 2, "text": "Mix in flour gradually, then fold in chocolate chips.", "ingredientRefs": [] },
+            { "stepNumber": 3, "text": "Drop spoonfuls onto a baking sheet and bake at 375°F for 9-11 minutes.", "ingredientRefs": [] }
+          ],
+          "conversionRules": []
+        }
+      ]
+    }
+  ],
+  "houseConversions": []
+}
