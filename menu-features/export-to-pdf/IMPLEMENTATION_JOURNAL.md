@@ -16,6 +16,8 @@
 - `f446f0b` — Added RATIONALE.md for Export to PDF feature
 - `5c5bbca` — Added design wireframes and design-evolution.md
 - `71cf0f1` — Added PdfExportService, wired Export PDF button into RecipeEditorView, added unit tests
+- `9ecbafc` — Added feature summary and implementation journal
+- `b1974a9` — Updated implementation journal with PR link
 
 ## PR History
 

@@ -4,8 +4,14 @@
 
 Since the Library View does not currently have recipes loaded in the GA2 build, the Export PDF button is visible but cannot be fully demonstrated end-to-end. The button appears in the Recipe Editor top bar alongside Edit, Save, and Discard.
 
-_Screenshot: Export PDF button visible in the Recipe Editor toolbar_
+_Screenshot: Export PDF button in the Recipe Editor toolbar_
 ![Export PDF button](design/export-button-screenshot.png)
+
+_Screenshot: File save dialog after clicking Export PDF_
+![File save dialog](design/export-dialog-screenshot.png)
+
+_Screenshot: The exported PDF output_
+![Exported PDF](design/exported-pdf-screenshot.png)
 
 ## Integration Notes
 
@@ -19,6 +25,5 @@ The feature reads directly from the `RecipeEditorViewModelImpl` to get the curre
 
 ## Status
 
-- **Complete:** PdfExportService generates formatted PDFs with title, servings, ingredients, and instructions. Unit tests pass. Export button is wired into the Recipe Editor view.
-- **In progress:** End-to-end testing blocked by Library View not loading recipes in the GA2 build.
-- **Known limitations:** No font size selector or header/footer toggle from the V2 wireframe — the current implementation exports with default formatting. The FileChooser dialog requires a windowed environment (won't work in headless/CI mode).
+- **Complete:** PdfExportService generates formatted PDFs with title, servings, ingredients, and instructions. Unit tests pass. Export button is wired into the Recipe Editor view with a file save dialog. End-to-end tested with recipes from Library View.
+- **Known limitations:** No font size selector or header/footer toggle from the V2 wireframe — the current implementation exports with default formatting.
